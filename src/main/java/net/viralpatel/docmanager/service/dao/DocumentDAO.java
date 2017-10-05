@@ -1,4 +1,4 @@
-package net.viralpatel.docmanager.dao;
+package net.viralpatel.docmanager.service.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.viralpatel.docmanager.model.Document;
+import net.viralpatel.docmanager.service.model.Document;
 
 @Repository
 public class DocumentDAO {

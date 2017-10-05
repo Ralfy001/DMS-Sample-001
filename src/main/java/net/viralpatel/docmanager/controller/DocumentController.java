@@ -8,9 +8,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import net.viralpatel.docmanager.dao.DocumentDAO;
-import net.viralpatel.docmanager.model.Document;
-
 import org.apache.commons.io.IOUtils;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +19,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import net.viralpatel.docmanager.service.dao.DocumentDAO;
+import net.viralpatel.docmanager.service.model.Document;
+
 @Controller
 public class DocumentController {
 	
-	@Autowired
 	private DocumentDAO documentDao;
+
+	@Autowired
+	public DocumentController(DocumentDAO documentDAO){
+		this.documentDao = documentDAO;
+	}
 	
 	@RequestMapping("/index")
 	public String index(Map<String, Object> map) {

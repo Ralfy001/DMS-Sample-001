@@ -1,4 +1,4 @@
-package net.viralpatel.docmanager.model;
+package net.viralpatel.docmanager.service.model;
 
 import java.sql.Blob;
 import java.sql.Date;
