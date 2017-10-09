@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>SpringLocalModels</ID>
+  <OriginalElement>module=DMS-Sample-001</OriginalElement>
+  <nodes>
+    <node x="0.0" y="62.0">module=DMS-Sample-001</node>
+    <node x="291.5" y="0.0">fileset=DMS-Sample-001/ApplicationContext</node>
+    <node x="218.0" y="62.0">fileset=DMS-Sample-001/MVC dispatcher initializer servlet context</node>
+    <node x="627.0" y="62.0">net.viralpatel.docmanager.context.WebContext</node>
+    <node x="841.0" y="62.0">org.springframework.web.servlet.config.annotation.EnableWebMvc</node>
+    <node x="226.5" y="124.0">fileset=DMS-Sample-001/MVC dispatcher initializer root context</node>
+    <node x="603.0" y="124.0">net.viralpatel.docmanager.context.ApplicationContext</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="module=DMS-Sample-001" target="fileset=DMS-Sample-001/MVC dispatcher initializer root context">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="fileset=DMS-Sample-001/MVC dispatcher initializer root context" target="net.viralpatel.docmanager.context.ApplicationContext">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="net.viralpatel.docmanager.context.WebContext" target="org.springframework.web.servlet.config.annotation.EnableWebMvc">
+      <point x="55.0" y="-0.0" />
+      <point x="-65.0" y="-0.0" />
+    </edge>
+    <edge source="fileset=DMS-Sample-001/MVC dispatcher initializer servlet context" target="net.viralpatel.docmanager.context.WebContext">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="module=DMS-Sample-001" target="fileset=DMS-Sample-001/ApplicationContext">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="module=DMS-Sample-001" target="fileset=DMS-Sample-001/MVC dispatcher initializer servlet context">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="486.0" y="73.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Show filesets as groups</Category>
+  </Categories>
+</Diagram>
+

@@ -12,12 +12,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import net.viralpatel.docmanager.service.config.PropertyConfig;
 import net.viralpatel.docmanager.service.model.Document;
 
-@EnableWebMvc
 @Configuration
 @ComponentScan("net.viralpatel.docmanager.service")
 public class ApplicationContext {
