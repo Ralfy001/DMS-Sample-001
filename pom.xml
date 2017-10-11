@@ -6,6 +6,16 @@
   <build>
     <plugins>
       <plugin>
+    	<groupId>org.apache.tomcat.maven</groupId>
+    	<artifactId>tomcat7-maven-plugin</artifactId>
+    	<version>2.2</version>
+    	<configuration>
+        	<server>TomcatServer-localhost</server>
+        	<url>http://localhost:8080/manager/text</url>
+        	<path>/DocumentManager</path>
+    	</configuration>
+	  </plugin>
+      <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <source>1.5</source>
