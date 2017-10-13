@@ -25,6 +25,6 @@ public class PropertyConfig {
   @Value("${jdbc.username}")
   private String username;
 
-  @Value("${jdbc.userpassword}")
+  @Value("${jdbc.password}")
   private String password;
 }
