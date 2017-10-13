@@ -50,10 +50,25 @@ public class ApplicationContext {
   Properties hibernateProperties() {
 
     Properties properties = new Properties();
+    
+    properties.put("hibernate.connection.driver_class", config.getDriverClassName());
+    properties.put("hibernate.connection.url", config.getDatabaseurl());
+    properties.put("hibernate.connection.username", config.getUsername());
+    properties.put("hibernate.connection.password", config.getPassword());
+        
     properties.put("hibernate.dialect", config.getDialect());
     properties.put("hibernate.show_sql", true);
     properties.put("hibernate.connection.SetBigStringTryClob", true);
     properties.put("hibernate.jdbc.batch_size", 0);
+    
+    
+    
+    properties.put("hibernate.c3p0.min_size", 5);
+    properties.put("hibernate.c3p0.max_size", 20);
+    properties.put("hibernate.c3p0.timeout", 300);
+    properties.put("hibernate.c3p0.max_statements", 50);
+    properties.put("hibernate.c3p0.idle_test_period", 3000);
+    
 
     return properties;
   }
