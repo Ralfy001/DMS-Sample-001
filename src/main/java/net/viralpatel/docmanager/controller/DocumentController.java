@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.hibernate.Hibernate;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -56,8 +57,8 @@ public class DocumentController {
 		System.out.println("ContentType:" + file.getContentType());
 		
 		try {
-			Blob blob = Hibernate.createBlob(file.getInputStream());
-
+						Blob blob = Hibernate.getLobCreator(((SessionFactory) documentDao).getCurrentSession()).createBlob(file.getInputStream(),file.getSize());
+			
 			document.setFilename(file.getOriginalFilename());
 			document.setContent(blob);
 			document.setContentType(file.getContentType());
