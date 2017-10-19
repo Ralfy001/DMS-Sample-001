@@ -165,15 +165,13 @@ public class AppController {
 	
 
 	@RequestMapping(value = { "/download-document-{userId}-{docId}" }, method = RequestMethod.GET)
-	public String downloadDocument(@PathVariable int userId, @PathVariable int docId, HttpServletResponse response) throws IOException {
+	public void downloadDocument(@PathVariable int userId, @PathVariable int docId, HttpServletResponse response) throws IOException {
 		UserDocument document = userDocumentService.findById(docId);
 		response.setContentType(document.getType());
         response.setContentLength(document.getContent().length);
         response.setHeader("Content-Disposition","attachment; filename=\"" + document.getName() +"\"");
  
         FileCopyUtils.copy(document.getContent(), response.getOutputStream());
- 
- 		return "redirect:/add-document-"+userId;
 	}
 
 	@RequestMapping(value = { "/delete-document-{userId}-{docId}" }, method = RequestMethod.GET)
