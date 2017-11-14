@@ -16,10 +16,10 @@
 		</div>
 		
 		<span class="well pull-left">
-			<a href="<c:url value='/add-document-${user.id}' />">Click here to upload/manage your documents</a>	
+			<a href="<c:url value='/add-document-${album.id}' />">Click here to upload/manage your fotos</a>
 		</span>
 		<span class="well pull-right">
-			Go to <a href="<c:url value='/list' />">Users List</a>
+			Go to <a href="<c:url value='/list' />">Album List</a>
 		</span>
 	</div>
 </body>

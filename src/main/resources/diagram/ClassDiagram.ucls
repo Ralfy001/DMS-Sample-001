@@ -44,7 +44,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.websystique.springmvc.dao.UserDocumentDaoImpl" project="DMS-Sample-001" 
+  <class id="5" language="java" name="com.websystique.springmvc.dao.FotoDaoImpl" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/dao/UserDocumentDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1271" y="987"/>    
@@ -64,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="7" language="java" name="com.websystique.springmvc.dao.UserDao" project="DMS-Sample-001" 
+  <interface id="7" language="java" name="com.websystique.springmvc.dao.AlbumDao" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/dao/UserDao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="564" y="1263"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="8" language="java" name="com.websystique.springmvc.dao.UserDaoImpl" project="DMS-Sample-001" 
+  <class id="8" language="java" name="com.websystique.springmvc.dao.AlbumDaoImpl" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/dao/UserDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="912" y="1263"/>    
@@ -83,7 +83,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="9" language="java" name="com.websystique.springmvc.dao.UserDocumentDao" project="DMS-Sample-001" 
+  <interface id="9" language="java" name="com.websystique.springmvc.dao.FotoDao" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/dao/UserDocumentDao.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1271" y="705"/>    
@@ -103,7 +103,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="com.websystique.springmvc.model.User" project="DMS-Sample-001" 
+  <class id="11" language="java" name="com.websystique.springmvc.model.Album" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/model/User.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-4" y="1146"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -112,7 +112,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.websystique.springmvc.model.UserDocument" project="DMS-Sample-001" 
+  <class id="12" language="java" name="com.websystique.springmvc.model.Foto" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/model/UserDocument.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="308" y="1146"/>    
@@ -122,7 +122,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="com.websystique.springmvc.service.UserServiceImpl" project="DMS-Sample-001" 
+  <class id="13" language="java" name="com.websystique.springmvc.service.AlbumServiceImpl" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/service/UserServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="564" y="994"/>    
@@ -132,7 +132,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="com.websystique.springmvc.service.UserDocumentServiceImpl" 
+  <class id="14" language="java" name="com.websystique.springmvc.service.FotoServiceImpl"
     project="DMS-Sample-001" 
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/service/UserDocumentServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -143,7 +143,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="15" language="java" name="com.websystique.springmvc.service.UserDocumentService" 
+  <interface id="15" language="java" name="com.websystique.springmvc.service.FotoService"
     project="DMS-Sample-001" 
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/service/UserDocumentService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -154,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="16" language="java" name="com.websystique.springmvc.service.UserService" project="DMS-Sample-001" 
+  <interface id="16" language="java" name="com.websystique.springmvc.service.AlbumService" project="DMS-Sample-001"
     file="/DMS-Sample-001/src/main/java/com/websystique/springmvc/service/UserService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="564" y="738"/>    
@@ -192,7 +192,7 @@
   </generalization>  
   <association id="22">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="23" name="userDocuments">        
+      <attribute id="23" name="foto">
         <position height="0" width="0" x="-1001" y="-374"/>      
       </attribute>      
       <multiplicity id="24" minimum="0" maximum="2147483647">        
@@ -272,7 +272,7 @@
   </association>  
   <association id="42">    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="43" name="user">        
+      <attribute id="43" name="album">
         <position height="0" width="0" x="-1341" y="135"/>      
       </attribute>      
       <multiplicity id="44" minimum="0" maximum="1">        

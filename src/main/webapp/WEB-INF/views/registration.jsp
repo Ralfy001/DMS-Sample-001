@@ -15,7 +15,7 @@
 
  	<div class="generic-container">
 	<div class="well lead">User Registration Form</div>
- 	<form:form method="POST" modelAttribute="user" class="form-horizontal">
+ 	<form:form method="POST" modelAttribute="album" class="form-horizontal">
 		<form:input type="hidden" path="id" id="id"/>
 		
 		<div class="row">
@@ -88,7 +88,7 @@
 		
 		<c:if test="${edit}">
 			<span class="well pull-left">
-				<a href="<c:url value='/add-document-${user.id}' />">Click here to upload/manage your documents</a>	
+				<a href="<c:url value='/add-document-${album.id}' />">Click here to upload/manage your fotos</a>
 			</span>
 		</c:if>
 		

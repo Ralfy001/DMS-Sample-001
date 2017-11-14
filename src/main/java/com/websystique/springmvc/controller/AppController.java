@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.websystique.springmvc.model.Album;
 import com.websystique.springmvc.model.FileBucket;
-import com.websystique.springmvc.model.User;
-import com.websystique.springmvc.model.UserDocument;
-import com.websystique.springmvc.service.UserDocumentService;
-import com.websystique.springmvc.service.UserService;
+import com.websystique.springmvc.model.Foto;
+import com.websystique.springmvc.service.AlbumService;
+import com.websystique.springmvc.service.FotoService;
 import com.websystique.springmvc.util.FileValidator;
 
 
@@ -35,10 +35,10 @@ import com.websystique.springmvc.util.FileValidator;
 public class AppController {
 
 	@Autowired
-	UserService userService;
+	AlbumService albumService;
 	
 	@Autowired
-	UserDocumentService userDocumentService;
+	FotoService fotoService;
 	
 	@Autowired
 	MessageSource messageSource;
@@ -55,30 +55,30 @@ public class AppController {
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
-	public String listUsers(ModelMap model) {
+	public String listAlbums(ModelMap model) {
 
-		List<User> users = userService.findAllUsers();
-		model.addAttribute("users", users);
-		return "userslist";
+		List<Album> albums = albumService.findAllAlbums();
+		model.addAttribute("albums", albums);
+		return "albumslist";
 	}
 
 	/**
 	 * This method will provide the medium to add a new user.
 	 */
-	@RequestMapping(value = { "/newuser" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/newAlbum" }, method = RequestMethod.GET)
 	public String newUser(ModelMap model) {
-		User user = new User();
-		model.addAttribute("user", user);
+		Album album = new Album();
+		model.addAttribute("album", album);
 		model.addAttribute("edit", false);
 		return "registration";
 	}
 
 	/**
 	 * This method will be called on form submission, handling POST request for
-	 * saving user in database. It also validates the user input
+	 * saving album in database. It also validates the album input
 	 */
-	@RequestMapping(value = { "/newuser" }, method = RequestMethod.POST)
-	public String saveUser(@Valid User user, BindingResult result,
+	@RequestMapping(value = { "/newalbum" }, method = RequestMethod.POST)
+	public String saveAlbum(@Valid Album album, BindingResult result,
 			ModelMap model) {
 
 		if (result.hasErrors()) {
@@ -87,22 +87,22 @@ public class AppController {
 
 		/*
 		 * Preferred way to achieve uniqueness of field [sso] should be implementing custom @Unique annotation 
-		 * and applying it on field [sso] of Model class [User].
+		 * and applying it on field [sso] of Model class [Album].
 		 * 
 		 * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
 		 * framework as well while still using internationalized messages.
 		 * 
 		 */
-		if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
-			FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
+		if(!albumService.isAlbumSSOUnique(album.getId(), album.getSsoId())){
+			FieldError ssoError =new FieldError("album","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{ album.getSsoId()}, Locale.getDefault()));
 		    result.addError(ssoError);
 			return "registration";
 		}
 		
-		userService.saveUser(user);
+		albumService.saveAlbum(album);
 		
-		model.addAttribute("user", user);
-		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " registered successfully");
+		model.addAttribute("album", album);
+		model.addAttribute("success", "Album " + album.getFirstName() + " "+ album.getLastName() + " registered successfully");
 		//return "success";
 		return "registrationsuccess";
 	}
@@ -111,29 +111,29 @@ public class AppController {
 	/**
 	 * This method will provide the medium to update an existing user.
 	 */
-	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.GET)
-	public String editUser(@PathVariable String ssoId, ModelMap model) {
-		User user = userService.findBySSO(ssoId);
-		model.addAttribute("user", user);
+	@RequestMapping(value = { "/edit-album-{ssoId}" }, method = RequestMethod.GET)
+	public String editAlbum(@PathVariable String ssoId, ModelMap model) {
+		Album album = albumService.findBySSO(ssoId);
+		model.addAttribute("album", album);
 		model.addAttribute("edit", true);
 		return "registration";
 	}
 	
 	/**
 	 * This method will be called on form submission, handling POST request for
-	 * updating user in database. It also validates the user input
+	 * updating album in database. It also validates the album input
 	 */
-	@RequestMapping(value = { "/edit-user-{ssoId}" }, method = RequestMethod.POST)
-	public String updateUser(@Valid User user, BindingResult result,
+	@RequestMapping(value = { "/edit-album-{ssoId}" }, method = RequestMethod.POST)
+	public String updateUser(@Valid Album album, BindingResult result,
 			ModelMap model, @PathVariable String ssoId) {
 
 		if (result.hasErrors()) {
 			return "registration";
 		}
 
-		userService.updateUser(user);
+		albumService.updateAlbum(album);
 
-		model.addAttribute("success", "User " + user.getFirstName() + " "+ user.getLastName() + " updated successfully");
+		model.addAttribute("success", "Album " + album.getFirstName() + " "+ album.getLastName() + " updated successfully");
 		return "registrationsuccess";
 	}
 
@@ -141,82 +141,82 @@ public class AppController {
 	/**
 	 * This method will delete an user by it's SSOID value.
 	 */
-	@RequestMapping(value = { "/delete-user-{ssoId}" }, method = RequestMethod.GET)
-	public String deleteUser(@PathVariable String ssoId) {
-		userService.deleteUserBySSO(ssoId);
+	@RequestMapping(value = { "/delete-album-{ssoId}" }, method = RequestMethod.GET)
+	public String deleteAlbum(@PathVariable String ssoId) {
+		albumService.deleteAlbumBySSO(ssoId);
 		return "redirect:/list";
 	}
 	
 
 	
-	@RequestMapping(value = { "/add-document-{userId}" }, method = RequestMethod.GET)
-	public String addDocuments(@PathVariable int userId, ModelMap model) {
-		User user = userService.findById(userId);
-		model.addAttribute("user", user);
+	@RequestMapping(value = { "/add-foto-{albumId}" }, method = RequestMethod.GET)
+	public String addFotos(@PathVariable int albumId, ModelMap model) {
+		Album album = albumService.findById(albumId);
+		model.addAttribute("album", album);
 
 		FileBucket fileModel = new FileBucket();
 		model.addAttribute("fileBucket", fileModel);
 
-		List<UserDocument> documents = userDocumentService.findAllByUserId(userId);
-		model.addAttribute("documents", documents);
+		List<Foto> fotos = fotoService.findAllByAlbumId(albumId);
+		model.addAttribute("fotos", fotos);
 		
-		return "managedocuments";
+		return "managefotos";
 	}
 	
 
-	@RequestMapping(value = { "/download-document-{userId}-{docId}" }, method = RequestMethod.GET)
-	public void downloadDocument(@PathVariable int userId, @PathVariable int docId, HttpServletResponse response) throws IOException {
-		UserDocument document = userDocumentService.findById(docId);
-		response.setContentType(document.getType());
-        response.setContentLength(document.getContent().length);
-        response.setHeader("Content-Disposition","attachment; filename=\"" + document.getName() +"\"");
+	@RequestMapping(value = { "/download-foto-{albumId}-{fotoId}" }, method = RequestMethod.GET)
+	public void downloadDocument(@PathVariable int albumId, @PathVariable int fotoId, HttpServletResponse response) throws IOException {
+		Foto foto = fotoService.findById(fotoId);
+		response.setContentType(foto.getType());
+        response.setContentLength(foto.getContent().length);
+        response.setHeader("Content-Disposition","attachment; filename=\"" + foto.getName() +"\"");
  
-        FileCopyUtils.copy(document.getContent(), response.getOutputStream());
+        FileCopyUtils.copy(foto.getContent(), response.getOutputStream());
 	}
 
-	@RequestMapping(value = { "/delete-document-{userId}-{docId}" }, method = RequestMethod.GET)
-	public String deleteDocument(@PathVariable int userId, @PathVariable int docId) {
-		userDocumentService.deleteById(docId);
-		return "redirect:/add-document-"+userId;
+	@RequestMapping(value = { "/delete-foto-{albumId}-{fotoId}" }, method = RequestMethod.GET)
+	public String deleteDocument(@PathVariable int albumId, @PathVariable int fotoId) {
+		fotoService.deleteById(fotoId);
+		return "redirect:/add-foto-"+albumId;
 	}
 
-	@RequestMapping(value = { "/add-document-{userId}" }, method = RequestMethod.POST)
-	public String uploadDocument(@Valid FileBucket fileBucket, BindingResult result, ModelMap model, @PathVariable int userId) throws IOException{
+	@RequestMapping(value = { "/add-foto-{albumId}" }, method = RequestMethod.POST)
+	public String uploadFoto(@Valid FileBucket fileBucket, BindingResult result, ModelMap model, @PathVariable int albumId) throws IOException{
 		
 		if (result.hasErrors()) {
 			System.out.println("validation errors");
-			User user = userService.findById(userId);
-			model.addAttribute("user", user);
+			Album album = albumService.findById(albumId);
+			model.addAttribute("album", album);
 
-			List<UserDocument> documents = userDocumentService.findAllByUserId(userId);
-			model.addAttribute("documents", documents);
+			List<Foto> fotos = fotoService.findAllByAlbumId(albumId);
+			model.addAttribute("fotos", fotos);
 			
-			return "managedocuments";
+			return "managefotos";
 		} else {
 			
 			System.out.println("Fetching file");
 			
-			User user = userService.findById(userId);
-			model.addAttribute("user", user);
+			Album album = albumService.findById(albumId);
+			model.addAttribute("album", album);
 
-			saveDocument(fileBucket, user);
+			saveFoto(fileBucket, album);
 
-			return "redirect:/add-document-"+userId;
+			return "redirect:/add-foto-"+albumId;
 		}
 	}
 	
-	private void saveDocument(FileBucket fileBucket, User user) throws IOException{
+	private void saveFoto(FileBucket fileBucket, Album album) throws IOException{
 		
-		UserDocument document = new UserDocument();
+		Foto foto = new Foto();
 		
 		MultipartFile multipartFile = fileBucket.getFile();
 		
-		document.setName(multipartFile.getOriginalFilename());
-		document.setDescription(fileBucket.getDescription());
-		document.setType(multipartFile.getContentType());
-		document.setContent(multipartFile.getBytes());
-		document.setUser(user);
-		userDocumentService.saveDocument(document);
+		foto.setName(multipartFile.getOriginalFilename());
+		foto.setDescription(fileBucket.getDescription());
+		foto.setType(multipartFile.getContentType());
+		foto.setContent(multipartFile.getBytes());
+		foto.setAlbum(album);
+		fotoService.saveFoto(foto);
 	}
 	
 }
