@@ -29,14 +29,6 @@ public class Album {
 	@Column(name="FIRST_NAME", nullable=false)
 	private String firstName;
 
-	@NotEmpty
-	@Column(name="LAST_NAME", nullable=false)
-	private String lastName;
-
-	@NotEmpty
-	@Column(name="EMAIL", nullable=false)
-	private String email;
-
 	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private Set<Foto> foto = new HashSet<Foto>();
 	
@@ -62,22 +54,6 @@ public class Album {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public Set<Foto> getFoto() {
@@ -122,8 +98,7 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [id=" + id + ", ssoId=" + ssoId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + "]";
+		return "Album [id=" + id + ", ssoId=" + ssoId + ", firstName=" + firstName + "]";
 	}
 
 }

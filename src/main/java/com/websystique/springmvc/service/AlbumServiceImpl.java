@@ -40,8 +40,6 @@ public class AlbumServiceImpl implements AlbumService {
 		if(entity!=null){
 			entity.setSsoId(album.getSsoId());
 			entity.setFirstName(album.getFirstName());
-			entity.setLastName(album.getLastName());
-			entity.setEmail(album.getEmail());
 			entity.setFoto(album.getFoto());
 		}
 	}
