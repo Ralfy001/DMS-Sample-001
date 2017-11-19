@@ -33,10 +33,11 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	}
     
     /*Set these variables for your project needs*/ 
-    
-	//private static final String LOCATION = "C:/Users/Giebl.Ralf/temp/";
-    private static final String LOCATION = "/tmp/";
-    
+    //private static final String LOCATION = "C:/Users/Giebl.Ralf/temp/";
+    //private static final String LOCATION = "/tmp/";
+    private static String systemTempDir = System.getProperty("java.io.tmpdir");
+    private static final String LOCATION = systemTempDir;
+        
 	private static final long MAX_FILE_SIZE = 1024 * 1024 * 25;//25MB
 	
 	private static final long MAX_REQUEST_SIZE = 1024 * 1024 * 30;//30MB
