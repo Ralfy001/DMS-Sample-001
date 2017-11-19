@@ -32,16 +32,16 @@
 
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="ssoId">SSO ID</label>
+				<label class="col-md-3 control-lable" for="albumId">ALBUM ID</label>
 				<div class="col-md-7">
 					<c:choose>
 						<c:when test="${edit}">
-							<form:input type="text" path="ssoId" id="ssoId" class="form-control input-sm" disabled="true"/>
+							<form:input type="text" path="albumId" id="albumId" class="form-control input-sm" disabled="true"/>
 						</c:when>
 						<c:otherwise>
-							<form:input type="text" path="ssoId" id="ssoId" class="form-control input-sm" />
+							<form:input type="text" path="albumId" id="albumId" class="form-control input-sm" />
 							<div class="has-error">
-								<form:errors path="ssoId" class="help-inline"/>
+								<form:errors path="albumId" class="help-inline"/>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -64,7 +64,7 @@
 		
 		<c:if test="${edit}">
 			<span class="well pull-left">
-				<a href="<c:url value='/add-document-${album.id}' />">Click here to upload/manage your fotos</a>
+				<a href="<c:url value='/add-foto-${album.id}' />">Click here to upload/manage your fotos</a>
 			</span>
 		</c:if>
 		

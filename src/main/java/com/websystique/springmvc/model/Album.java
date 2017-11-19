@@ -22,8 +22,8 @@ public class Album {
 	private Integer id;
 
 	@NotEmpty
-	@Column(name="SSO_ID", unique=true, nullable=false)
-	private String ssoId;
+	@Column(name="ALBUM_ID", unique=true, nullable=false)
+	private String albumId;
 	
 	@NotEmpty
 	@Column(name="FIRST_NAME", nullable=false)
@@ -40,12 +40,12 @@ public class Album {
 		this.id = id;
 	}
 
-	public String getSsoId() {
-		return ssoId;
+	public String getAlbumId() {
+		return albumId;
 	}
 
-	public void setSsoId(String ssoId) {
-		this.ssoId = ssoId;
+	public void setAlbumId(String albumId) {
+		this.albumId = albumId;
 	}
 
 	public String getFirstName() {
@@ -70,7 +70,7 @@ public class Album {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((ssoId == null) ? 0 : ssoId.hashCode());
+		result = prime * result + ((albumId == null) ? 0 : albumId.hashCode());
 		return result;
 	}
 
@@ -88,17 +88,17 @@ public class Album {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (ssoId == null) {
-			if (other.ssoId != null)
+		if (albumId == null) {
+			if (other.albumId != null)
 				return false;
-		} else if (!ssoId.equals(other.ssoId))
+		} else if (!albumId.equals(other.albumId))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Album [id=" + id + ", ssoId=" + ssoId + ", firstName=" + firstName + "]";
+		return "Album [id=" + id + ", albumId=" + albumId + ", firstName=" + firstName + "]";
 	}
 
 }

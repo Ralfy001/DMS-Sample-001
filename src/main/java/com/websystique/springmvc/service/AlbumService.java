@@ -9,16 +9,16 @@ public interface AlbumService {
 	
 	Album findById(int id);
 	
-	Album findBySSO(String sso);
+	Album findByALBUMID(String albumId);
 	
 	void saveAlbum(Album album);
 	
 	void updateAlbum(Album album);
 	
-	void deleteAlbumBySSO(String sso);
+	void deleteAlbumByALBUMID(String albumId);
 
 	List<Album> findAllAlbums();
 	
-	boolean isAlbumSSOUnique(Integer id, String sso);
+	boolean isAlbumALBUMIDUnique(Integer id, String albumID);
 
 }

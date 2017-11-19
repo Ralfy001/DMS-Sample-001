@@ -18,10 +18,10 @@ public class AlbumDaoImpl extends AbstractDao<Integer, Album> implements AlbumDa
 		return album;
 	}
 
-	public Album findBySSO(String sso) {
-		System.out.println("SSO : "+sso);
+	public Album findByALBUMID(String albumId) {
+		System.out.println("ALBUMID : "+albumId);
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("ssoId", sso));
+		crit.add(Restrictions.eq("albumId", albumId));
 		Album album = (Album)crit.uniqueResult();
 		return album;
 	}
@@ -39,9 +39,9 @@ public class AlbumDaoImpl extends AbstractDao<Integer, Album> implements AlbumDa
 		persist(album);
 	}
 
-	public void deleteBySSO(String sso) {
+	public void deleteByALBUMID(String albumId) {
 		Criteria crit = createEntityCriteria();
-		crit.add(Restrictions.eq("ssoId", sso));
+		crit.add(Restrictions.eq("albumId", albumId));
 		Album album = (Album)crit.uniqueResult();
 		delete(album);
 	}

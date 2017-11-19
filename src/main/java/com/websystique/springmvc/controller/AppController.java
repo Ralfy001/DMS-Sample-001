@@ -94,10 +94,10 @@ public class AppController {
 		 * framework as well while still using internationalized messages.
 		 * 
 		 */
-    if (!albumService.isAlbumSSOUnique(album.getId(), album.getSsoId())) {
+    if (!albumService.isAlbumALBUMIDUnique(album.getId(), album.getAlbumId())) {
       FieldError ssoError = new FieldError("album",
-          "ssoId",
-          messageSource.getMessage("non.unique.ssoId", new String[] { album.getSsoId() }, Locale.getDefault()));
+          "albumId",
+          messageSource.getMessage("non.unique.albumId", new String[] { album.getAlbumId() }, Locale.getDefault()));
       result.addError(ssoError);
       return "registration";
     }
@@ -114,9 +114,9 @@ public class AppController {
   /**
    * This method will provide the medium to update an existing user.
    */
-  @RequestMapping(value = { "/edit-album-{ssoId}" }, method = RequestMethod.GET)
-  public String editAlbum(@PathVariable String ssoId, ModelMap model) {
-    Album album = albumService.findBySSO(ssoId);
+  @RequestMapping(value = { "/edit-album-{albumId}" }, method = RequestMethod.GET)
+  public String editAlbum(@PathVariable String albumId, ModelMap model) {
+    Album album = albumService.findByALBUMID(albumId);
     model.addAttribute("album", album);
     model.addAttribute("edit", true);
     return "registration";
@@ -126,10 +126,10 @@ public class AppController {
    * This method will be called on form submission, handling POST request for
    * updating album in database. It also validates the album input
    */
-  @RequestMapping(value = { "/edit-album-{ssoId}" }, method = RequestMethod.POST)
-  public String updateUser(
+  @RequestMapping(value = { "/edit-album-{albumId}" }, method = RequestMethod.POST)
+  public String updateAlbum(
       @Valid Album album, BindingResult result,
-      ModelMap model, @PathVariable String ssoId
+      ModelMap model, @PathVariable String albumId
   ) {
 
     if (result.hasErrors()) {
@@ -144,11 +144,11 @@ public class AppController {
 
 
   /**
-   * This method will delete an user by it's SSOID value.
+   * This method will delete an user by it's ALBUMID value.
    */
-  @RequestMapping(value = { "/delete-album-{ssoId}" }, method = RequestMethod.GET)
-  public String deleteAlbum(@PathVariable String ssoId) {
-    albumService.deleteAlbumBySSO(ssoId);
+  @RequestMapping(value = { "/delete-album-{albumId}" }, method = RequestMethod.GET)
+  public String deleteAlbum(@PathVariable String albumId) {
+    albumService.deleteAlbumByALBUMID(albumId);
     return "redirect:/list";
   }
 

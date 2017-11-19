@@ -9,11 +9,11 @@ public interface AlbumDao {
 
 	Album findById(int id);
 	
-	Album findBySSO(String sso);
+	Album findByALBUMID(String albumId);
 	
 	void save(Album album);
 	
-	void deleteBySSO(String sso);
+	void deleteByALBUMID(String albumId);
 	
 	List<Album> findAllAlbums();
 

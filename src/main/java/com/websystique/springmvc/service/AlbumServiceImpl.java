@@ -21,8 +21,8 @@ public class AlbumServiceImpl implements AlbumService {
 		return dao.findById(id);
 	}
 
-	public Album findBySSO(String sso) {
-		Album album = dao.findBySSO(sso);
+	public Album findByALBUMID(String albumId) {
+		Album album = dao.findByALBUMID(albumId);
 		return album;
 	}
 
@@ -38,23 +38,23 @@ public class AlbumServiceImpl implements AlbumService {
 	public void updateAlbum(Album album) {
 		Album entity = dao.findById(album.getId());
 		if(entity!=null){
-			entity.setSsoId(album.getSsoId());
+			entity.setAlbumId(album.getAlbumId());
 			entity.setFirstName(album.getFirstName());
 			entity.setFoto(album.getFoto());
 		}
 	}
 
 	
-	public void deleteAlbumBySSO(String sso) {
-		dao.deleteBySSO(sso);
+	public void deleteAlbumByALBUMID(String albumId) {
+		dao.deleteByALBUMID(albumId);
 	}
 
 	public List<Album> findAllAlbums() {
 		return dao.findAllAlbums();
 	}
 
-	public boolean isAlbumSSOUnique(Integer id, String sso) {
-		Album album = findBySSO(sso);
+	public boolean isAlbumALBUMIDUnique(Integer id, String albumId) {
+		Album album = findByALBUMID(albumId);
 		return ( album == null || ((id != null) && (album.getId() == id)));
 	}
 	

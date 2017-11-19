@@ -28,9 +28,9 @@
 					<c:forEach items="${albums}" var="album">
 						<tr>
 							<td>${album.firstName}</td>
-							<td>${album.ssoId}</td>
-							<td><a href="<c:url value='/edit-album-${album.ssoId}' />" class="btn btn-success custom-width">edit</a></td>
-							<td><a href="<c:url value='/delete-album-${album.ssoId}' />" class="btn btn-danger custom-width">delete</a></td>
+							<td>${album.albumId}</td>
+							<td><a href="<c:url value='/edit-album-${album.albumId}' />" class="btn btn-success custom-width">edit</a></td>
+							<td><a href="<c:url value='/delete-album-${album.albumId}' />" class="btn btn-danger custom-width">delete</a></td>
 						</tr>
 					</c:forEach>
 		    		</tbody>

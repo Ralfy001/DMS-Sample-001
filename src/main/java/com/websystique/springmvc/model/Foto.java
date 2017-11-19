@@ -33,7 +33,7 @@ public class Foto {
 	private byte[] content;
 
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "Foto_ID")
+	@JoinColumn(name = "ALBUM_ID")
 	private Album album;
 	
 	

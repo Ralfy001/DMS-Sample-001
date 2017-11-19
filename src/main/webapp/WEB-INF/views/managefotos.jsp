@@ -35,8 +35,8 @@
 							<td>${foto.name}</td>
 							<td>${foto.type}</td>
 							<td>${foto.description}</td>
-							<td><a href="<c:url value='/download-document-${album.id}-${foto.id}' />" class="btn btn-success custom-width">download</a></td>
-							<td><a href="<c:url value='/delete-document-${album.id}-${foto.id}' />" class="btn btn-danger custom-width">delete</a></td>
+							<td><a href="<c:url value='/download-foto-${album.id}-${foto.id}' />" class="btn btn-success custom-width">download</a></td>
+							<td><a href="<c:url value='/delete-foto-${album.id}-${foto.id}' />" class="btn btn-danger custom-width">delete</a></td>
 						</tr>
 					</c:forEach>
 		    		</tbody>
