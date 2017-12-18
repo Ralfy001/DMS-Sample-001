@@ -1,6 +1,7 @@
 package com.websystique.springmvc.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Locale;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 import com.websystique.springmvc.model.Album;
 import com.websystique.springmvc.model.FileBucket;
 import com.websystique.springmvc.model.Foto;
@@ -51,11 +53,20 @@ public class AppController {
   }
 
   /**
-   * This method will list all existing users.
+   * This method will list all existing albums.
    */
-  @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
-  public String listAlbums(ModelMap model) {
 
+  @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+  public String listAlbums(ModelMap model) throws UnsupportedEncodingException {
+
+    for (int i = 0; i < albumService.findAllAlbums().size(); i++) {
+      List<Foto> foto = fotoService.findAllByAlbumId(i);
+      for (int d = 0; d < foto.size(); d++) {
+        byte[] encodeBase64 = Base64.encode(foto.get(d).getContent()).getBytes();
+       String base64Encoded = new String(encodeBase64, "UTF-8");
+        model.addAttribute("fotoid",base64Encoded);
+      }
+    }
     List<Album> albums = albumService.findAllAlbums();
     model.addAttribute("albums", albums);
     return "albumslist";
@@ -112,7 +123,7 @@ public class AppController {
 
 
   /**
-   * This method will provide the medium to update an existing user.
+   * This method will provide the medium to update an existing Album.
    */
   @RequestMapping(value = { "/edit-album-{albumId}" }, method = RequestMethod.GET)
   public String editAlbum(@PathVariable String albumId, ModelMap model) {
@@ -144,7 +155,7 @@ public class AppController {
 
 
   /**
-   * This method will delete an user by it's ALBUMID value.
+   * This method will delete an Album by it's ALBUMID value.
    */
   @RequestMapping(value = { "/delete-album-{albumId}" }, method = RequestMethod.GET)
   public String deleteAlbum(@PathVariable String albumId) {
