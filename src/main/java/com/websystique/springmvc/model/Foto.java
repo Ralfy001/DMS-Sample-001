@@ -17,17 +17,17 @@ import javax.persistence.Table;
 public class Foto {
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;	
-	
+	private Integer id;
+
 	@Column(name="name", length=100, nullable=false)
 	private String name;
-	
+
 	@Column(name="description", length=255)
 	private String description;
-	
+
 	@Column(name="type", length=100, nullable=false)
 	private String type;
-	
+
 	@Lob @Basic(fetch = FetchType.LAZY)
 	@Column(name="content", nullable=false)
 	private byte[] content;
@@ -35,8 +35,8 @@ public class Foto {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "ALBUM_ID")
 	private Album album;
-	
-	
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -123,5 +123,5 @@ public class Foto {
 	}
 
 
-	
+
 }
