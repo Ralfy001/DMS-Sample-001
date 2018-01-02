@@ -53,10 +53,31 @@ public class AppController {
   }
 
   /**
+   * This method will display the startingpage.
+   */
+
+  @RequestMapping(value = { "/", "/start" }, method = RequestMethod.GET)
+  public String showStartingPage(ModelMap model) {
+
+//    for (int i = 0; i < albumService.findAllAlbums().size(); i++) {
+//      List<Foto> foto = fotoService.findAllByAlbumId(i);
+//      for (int d = 0; d < foto.size(); d++) {
+//        byte[] encodeBase64 = Base64.encode(foto.get(d).getContent()).getBytes();
+//       String base64Encoded = new String(encodeBase64, "UTF-8");
+//        model.addAttribute("fotoid",base64Encoded);
+//      }
+//    }
+//    List<Album> albums = albumService.findAllAlbums();
+//    model.addAttribute("albums", albums);
+//    //return "albumslist";
+    return "startingpage";
+  }
+
+  /**
    * This method will list all existing albums.
    */
 
-  @RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+  @RequestMapping(value = { "/list" }, method = RequestMethod.GET)
   public String listAlbums(ModelMap model) throws UnsupportedEncodingException {
 
     for (int i = 0; i < albumService.findAllAlbums().size(); i++) {
@@ -70,6 +91,7 @@ public class AppController {
     List<Album> albums = albumService.findAllAlbums();
     model.addAttribute("albums", albums);
     return "albumslist";
+    //return "startingpage";
   }
 
   /**
