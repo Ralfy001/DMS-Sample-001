@@ -1,32 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Full Screen Menu</title>
+		<link rel="stylesheet" href="static/css/style.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<script type="application/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+		
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.toggle a').hover(function(){
+					$('.active').removeClass('active');
+					$('.menu').toggleClass('active');
+				});
+				$('.menu li').click(function() {
+      		$('.menu').toggleClass('active');
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Starting Page</title>
-    
-    <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"> -->
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
-</head>
-
-<body>
-  
-<div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This part is inside a .container class.</p> 
-  <p>The .container class provides a responsive fixed width container.</p>           
-</div>
-
-</body>
+				//$('.toggle a').hover(function(){
+				//	$('.menu').hide();
+				//});
+    		});
+    	})
+		</script>
+		
+		
+	</head>
+	<body>
+		<!--img src="images/background.jpg" alt="bckgrnd" class="bg" /> -->
+			<div class="toggle">
+				<a><i class="fa fa-bars" aria-hidden="true"></i></a>
+			</div>
+		<div class="menu"> 
+			<ul>
+				<li><a href="start">Reload Start</a></li>
+				<li><a href="list">Albums</a></li>
+				<li><a class="info" href="#">Close Overlay</a></li>
+			</ul>
+		</div>
+	<body>
 </html>
