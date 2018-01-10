@@ -30,7 +30,7 @@
                 <c:forEach items="${albums}" var="album">
                     <tr>
                         <td>${album.firstName}</td>
-                        <td><img src="data:image/jpeg;base64,${fotoid}" width="70" height="50"/></td>
+                        <td><img src="data:image/jpeg;base64,${fotoId}" width="35" height="25"/></td>
                         <td>${album.albumId}</td>
                         <td><a href="<c:url value='/edit-album-${album.albumId}' />" class="btn btn-success custom-width">edit</a>
                         </td>
