@@ -21,6 +21,7 @@
 		    		<thead>
 			      		<tr>
 					        <th>No.</th>
+					        <th>Vorschau</th>
 					        <th>File Name</th>
 					        <th>Type</th>
 					        <th>Description</th>
@@ -32,6 +33,7 @@
 					<c:forEach items="${fotos}" var="foto" varStatus="counter">
 						<tr>
 							<td>${counter.index + 1}</td>
+							<td><img src="/Spring4MVCFileUploadDownloadWithHibernate/fotoDisplay?id=${foto.id}" width="105" height="75"/></td>
 							<td>${foto.name}</td>
 							<td>${foto.type}</td>
 							<td>${foto.description}</td>

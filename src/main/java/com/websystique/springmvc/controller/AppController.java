@@ -2,9 +2,14 @@ package com.websystique.springmvc.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
+import javax.annotation.Resource;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -20,6 +25,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
@@ -83,14 +89,17 @@ public class AppController {
     List<Album> albums = albumService.findAllAlbums();
     model.addAttribute("albums", albums);
 
+	HashMap<Album, List<?>> gallery = new HashMap<Album, List<?>>();
     for (int i = 0; i < albums.size(); i++) {
       int albumId = albums.get(i).getId();
       List<Foto> fotoListe = fotoService.findAllByAlbumId(albumId);
+      gallery.put(albums.get(i), fotoListe);
       for (int d = 0; d < fotoListe.size(); d++) {
         byte[] encodeBase64 = Base64.encode(fotoListe.get(d).getContent()).getBytes();
         String fotoId = new String(encodeBase64, "UTF-8");
         model.addAttribute("fotoId", fotoId);
       }
+      model.addAttribute("gallery", gallery);
     }
     return "albumslist";
     //return "startingpage";
@@ -259,4 +268,16 @@ public class AppController {
     foto.setAlbum(album);
     fotoService.saveFoto(foto);
   }
+
+  @RequestMapping(value = { "/fotoDisplay" }, method = RequestMethod.GET)
+    public void showImage(@RequestParam("id") Integer fotoId, HttpServletResponse response,HttpServletRequest request) 
+            throws ServletException, IOException{
+
+      Foto foto = fotoService.findById(fotoId);        
+      response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+      response.getOutputStream().write(foto.getContent());
+
+      response.getOutputStream().close();
+  	}
+
 }
