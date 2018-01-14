@@ -5,9 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -89,11 +87,11 @@ public class AppController {
     List<Album> albums = albumService.findAllAlbums();
     model.addAttribute("albums", albums);
 
-	HashMap<Album, List<?>> gallery = new HashMap<Album, List<?>>();
+	HashMap<Object[], List<?>> gallery = new HashMap<Object[], List<?>>();
     for (int i = 0; i < albums.size(); i++) {
       int albumId = albums.get(i).getId();
       List<Foto> fotoListe = fotoService.findAllByAlbumId(albumId);
-      gallery.put(albums.get(i), fotoListe);
+      gallery.put((Object[]) albums.toArray()[i] , fotoListe);
       for (int d = 0; d < fotoListe.size(); d++) {
         byte[] encodeBase64 = Base64.encode(fotoListe.get(d).getContent()).getBytes();
         String fotoId = new String(encodeBase64, "UTF-8");
