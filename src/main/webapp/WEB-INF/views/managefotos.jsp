@@ -33,7 +33,7 @@
 					<c:forEach items="${fotos}" var="foto" varStatus="counter">
 						<tr>
 							<td>${counter.index + 1}</td>
-							<td><img src="/Spring4MVCFileUploadDownloadWithHibernate/fotoDisplay?id=${foto.id}" width="105" height="75"/></td>
+							<td><img class="img-thumbnail" src="/Spring4MVCFileUploadDownloadWithHibernate/fotoDisplay?id=${foto.id}" width="105"/></td>
 							<td>${foto.name}</td>
 							<td>${foto.type}</td>
 							<td>${foto.description}</td>
