@@ -30,7 +30,11 @@
                 <c:forEach items="${albums}" var="album">
                     <tr>
                         <td>${album.firstName}</td>
-                        <td><img src="data:image/jpeg;base64,${fotoId}" width="35" height="25"/></td>
+                        <td>
+                           <c:forEach items="${gallery[album]}" var="foto">
+                           	<img src="/Spring4MVCFileUploadDownloadWithHibernate/fotoDisplay?id=${foto.id}" height="75"/>
+                           </c:forEach>
+                        </td>
                         <td>${album.albumId}</td>
                         <td><a href="<c:url value='/edit-album-${album.albumId}' />" class="btn btn-success custom-width">edit</a>
                         </td>
