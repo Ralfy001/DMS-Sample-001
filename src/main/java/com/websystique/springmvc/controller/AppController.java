@@ -91,9 +91,10 @@ public class AppController {
     for (int i = 0; i < albums.size(); i++) {
       int albumId = albums.get(i).getId();
       List<Foto> fotoListe = fotoService.findAllByAlbumId(albumId);
-      gallery.put(albums.get(i) , fotoListe);
-      model.addAttribute("gallery", gallery);
+      gallery.put(albums.get(i), fotoListe);  
     }
+    model.addAttribute("gallery", gallery);
+    
     return "albumslist";
     //return "startingpage";
   }
