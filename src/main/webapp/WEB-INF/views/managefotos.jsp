@@ -77,8 +77,7 @@
 							<input type="submit" value="Upload" class="btn btn-primary btn-sm">
 						</div>
 					</div>
-	
-				</form:form>
+					</form:form>
 				</div>
 		</div>
 	 	<div class="well">
