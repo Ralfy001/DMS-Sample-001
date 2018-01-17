@@ -1,4 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
 /target/
-/.settings
-/.classpath
+/.settings/
 /.project
+/.classpath
+*.iml
+*.mwb
