@@ -33,7 +33,7 @@
 					<tbody>
 						<c:forEach items="${gallery.keySet()}" var="album">
 							<tr>
-								<td>${album.firstName}</td>
+								<td>${album.title}</td>
 								<td><c:forEach items="${gallery[album]}" var="foto">
 										<img class="img-thumbnail-custom" src="fotoDisplay?id=${foto.id}" height="75" />
 									</c:forEach></td>

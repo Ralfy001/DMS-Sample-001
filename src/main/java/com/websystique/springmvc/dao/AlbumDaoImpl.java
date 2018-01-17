@@ -28,7 +28,7 @@ public class AlbumDaoImpl extends AbstractDao<Integer, Album> implements AlbumDa
 
 	@SuppressWarnings("unchecked")
 	public List<Album> findAllAlbums() {
-		Criteria criteria = createEntityCriteria().addOrder(Order.asc("firstName"));
+		Criteria criteria = createEntityCriteria().addOrder(Order.asc("title"));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
 		List<Album> albums = (List<Album>) criteria.list();
 		
