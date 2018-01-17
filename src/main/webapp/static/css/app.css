@@ -40,3 +40,12 @@ body, .form-control{
 .custom-width {
     width: 80px !important;
 }
+
+.img-thumbnail-custom {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-height: 100%;
+  widht: auto;
+}
