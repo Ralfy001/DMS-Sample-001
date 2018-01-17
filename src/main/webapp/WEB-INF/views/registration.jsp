@@ -20,11 +20,11 @@
 		
 		<div class="row">
 			<div class="form-group col-md-12">
-				<label class="col-md-3 control-lable" for="firstName">Name </label>
+				<label class="col-md-3 control-lable" for="title">Name </label>
 				<div class="col-md-7">
-					<form:input type="text" path="firstName" id="firstName" class="form-control input-sm"/>
+					<form:input type="text" path="title" id="title" class="form-control input-sm"/>
 					<div class="has-error">
-						<form:errors path="firstName" class="help-inline"/>
+						<form:errors path="title" class="help-inline"/>
 					</div>
 				</div>
 			</div>

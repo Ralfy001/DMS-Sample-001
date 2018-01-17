@@ -5,7 +5,7 @@ USE websystique;
 create table ALBUM (
    id BIGINT NOT NULL AUTO_INCREMENT,
    album_id VARCHAR(30) NOT NULL,
-   first_name VARCHAR(30) NOT NULL,
+   title VARCHAR(30) NOT NULL,
    PRIMARY KEY (id),
    UNIQUE (album_id)
 );

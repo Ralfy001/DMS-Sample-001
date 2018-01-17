@@ -26,8 +26,8 @@ public class Album {
 	private String albumId;
 	
 	@NotEmpty
-	@Column(name="FIRST_NAME", nullable=false)
-	private String firstName;
+	@Column(name="TITLE", nullable=false)
+	private String title;
 
 	@OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private Set<Foto> foto = new HashSet<Foto>();
@@ -48,12 +48,12 @@ public class Album {
 		this.albumId = albumId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Set<Foto> getFoto() {
@@ -98,7 +98,7 @@ public class Album {
 
 	@Override
 	public String toString() {
-		return "Album [id=" + id + ", albumId=" + albumId + ", firstName=" + firstName + "]";
+		return "Album [id=" + id + ", albumId=" + albumId + ", title=" + title + "]";
 	}
 
 }

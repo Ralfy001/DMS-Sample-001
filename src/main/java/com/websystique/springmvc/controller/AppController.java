@@ -119,7 +119,7 @@ public class AppController {
     albumService.saveAlbum(album);
 
     model.addAttribute("album", album);
-    model.addAttribute("success", "Album " + album.getFirstName() + " registered successfully");
+    model.addAttribute("success", "Album " + album.getTitle() + " registered successfully");
     //return "success";
     return "registrationsuccess";
   }
@@ -152,7 +152,7 @@ public class AppController {
 
     albumService.updateAlbum(album);
 
-    model.addAttribute("success", "Album " + album.getFirstName() + " updated successfully");
+    model.addAttribute("success", "Album " + album.getTitle() + " updated successfully");
     return "registrationsuccess";
   }
 

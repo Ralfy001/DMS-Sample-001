@@ -39,7 +39,7 @@ public class AlbumServiceImpl implements AlbumService {
 		Album entity = dao.findById(album.getId());
 		if(entity!=null){
 			entity.setAlbumId(album.getAlbumId());
-			entity.setFirstName(album.getFirstName());
+			entity.setTitle(album.getTitle());
 			entity.setFoto(album.getFoto());
 		}
 	}
